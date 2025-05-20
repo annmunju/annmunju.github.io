@@ -1,0 +1,17 @@
+<!-- _includes/clickstream.html -->
+<script>
+  document.addEventListener('click', event => {
+    const payload = {
+      path: window.location.pathname,
+      tag: event.target.tagName,
+      id: event.target.id || null,
+      timestamp: new Date().toISOString()
+    };
+    // Kafka REST Proxy 예시 호출 (혹은 Ingestion API)
+    fetch('http://localhost:8000/ingest', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/vnd.kafka.json.v2+json' },
+      body: JSON.stringify({ records: [{ key: null, value: payload }] })
+    });
+  });
+</script>
