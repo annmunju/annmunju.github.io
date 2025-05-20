@@ -7,11 +7,12 @@
       id: event.target.id || null,
       timestamp: new Date().toISOString()
     };
-    // Kafka REST Proxy 예시 호출 (혹은 Ingestion API)
+    // Ingest API 호출 (Kafka 없이 테스트)
     fetch('http://localhost:8000/ingest', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/vnd.kafka.json.v2+json' },
-      body: JSON.stringify({ records: [{ key: null, value: payload }] })
-    });
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .catch(err => console.error('Ingest error:', err));
   });
 </script>
