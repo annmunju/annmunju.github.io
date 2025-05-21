@@ -1,4 +1,10 @@
 <!-- _includes/clickstream.html -->
+{% if jekyll.environment == "production" %}
+  {% assign ingest_url = "INGEST_API_GATEWAY_URL" %}
+{% else %}
+  {% assign ingest_url = "http://localhost:8000/ingest" %}
+{% endif %}
+
 <script>
   document.addEventListener('click', event => {
     const payload = {
@@ -7,8 +13,7 @@
       id: event.target.id || null,
       timestamp: new Date().toISOString()
     };
-    // Ingest API 호출 (Kafka 없이 테스트)
-    fetch('http://localhost:8000/ingest', {
+    fetch("{{ ingest_url }}", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

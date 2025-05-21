@@ -45,6 +45,10 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
+      - name: Inject Ingest URL
+        run: |
+          sed -i "s#INGEST_API_GATEWAY_URL#${{ secrets.INGEST_API_URL }}#g" _includes/clickstream.html
+
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
