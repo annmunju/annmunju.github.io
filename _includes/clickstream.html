@@ -6,7 +6,11 @@
 {% endif %}
 
 <script>
-  const LOG_ENDPOINT = "{{ ingest_url }}";
+(function() {
+  // 이미 선언된 경우 재선언 방지
+  if (window.__CLICKSTREAM_LOG_ENDPOINT__) return;
+  window.__CLICKSTREAM_LOG_ENDPOINT__ = "{{ ingest_url }}";
+  const LOG_ENDPOINT = window.__CLICKSTREAM_LOG_ENDPOINT__;
 
   // ———— 유틸리티: 로그 전송 함수 ————
   function sendLog(eventType, extra = {}) {
