@@ -25,3 +25,9 @@ package-lock.json
 # Misc
 _sass/vendors
 assets/js/dist
+
+# log
+*.log
+
+# mac
+.DS_Store
