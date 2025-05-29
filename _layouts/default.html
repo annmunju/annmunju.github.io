@@ -76,9 +76,7 @@ layout: compress
 
     <!-- Embedded scripts -->
 
-    {% raw %}
     {% include clickstream.html %}
-    {% endraw %}
 
     {% for _include in layout.script_includes %}
       {% assign _include_path = _include | append: '.html' %}
