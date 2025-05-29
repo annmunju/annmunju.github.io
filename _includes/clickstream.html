@@ -1,8 +1,6 @@
-<file name=0 path=/Users/ahnmunju/Documents/annmunju.github.io/_includes/clickstream.html><!-- _includes/clickstream.html -->
-
 <script>
   (function() {
-    const LOG_ENDPOINT = 'INGEST_API_GATEWAY_URL';
+    const LOG_ENDPOINT = 'https://8hrwthhcbc.execute-api.ap-northeast-2.amazonaws.com/ingest';
 
     // ———— 유틸리티: 로그 전송 함수 ————
     function sendLog(eventType, extra = {}) {
