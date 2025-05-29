@@ -64,8 +64,6 @@
     // ———— 4) 클릭 이벤트 로깅 ————
     document.addEventListener('click', e => {
       const tgt = e.target.closest('[data-log-click]') || e.target;
-      // 👇 클릭 로그를 콘솔에도 출력
-      console.log('click_event:', { tag: tgt.tagName, id: tgt.id || null, x: e.clientX, y: e.clientY });
       sendLog('click_event', {
         tag: tgt.tagName,
         id: tgt.id || null,
