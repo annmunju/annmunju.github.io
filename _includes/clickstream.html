@@ -6,116 +6,116 @@
 {% endif %}
 
 <script>
-(function() {
-  // 이미 선언된 경우 재선언 방지
-  if (window.__CLICKSTREAM_LOG_ENDPOINT__) return;
-  window.__CLICKSTREAM_LOG_ENDPOINT__ = "{{ ingest_url }}";
-  const LOG_ENDPOINT = window.__CLICKSTREAM_LOG_ENDPOINT__;
+  (function() {
+    // 이미 선언된 경우 재선언 방지
+    if (window.__CLICKSTREAM_LOG_ENDPOINT__) return;
+    window.__CLICKSTREAM_LOG_ENDPOINT__ = "{{ ingest_url }}";
+    const LOG_ENDPOINT = window.__CLICKSTREAM_LOG_ENDPOINT__;
 
-  // ———— 유틸리티: 로그 전송 함수 ————
-  function sendLog(eventType, extra = {}) {
-    const utm = JSON.parse(sessionStorage.getItem('utm') || '{}');
-    const payload = {
-      event: eventType,
-      timestamp: new Date().toISOString(),
-      path: window.location.pathname,
-      referrer: document.referrer || null,
-      ...utm,
-      ...extra
-    };
-    // 언로드 시 세션 종료만 sendBeacon 사용
-    if (eventType === 'session_end' && navigator.sendBeacon) {
-      navigator.sendBeacon(LOG_ENDPOINT, JSON.stringify(payload));
-    } else {
-      fetch(LOG_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true
-      }).catch(err => console.error('Ingest error:', err));
+    // ———— 유틸리티: 로그 전송 함수 ————
+    function sendLog(eventType, extra = {}) {
+      const utm = JSON.parse(sessionStorage.getItem('utm') || '{}');
+      const payload = {
+        event: eventType,
+        timestamp: new Date().toISOString(),
+        path: window.location.pathname,
+        referrer: document.referrer || null,
+        ...utm,
+        ...extra
+      };
+      // 언로드 시 세션 종료만 sendBeacon 사용
+      if (eventType === 'session_end' && navigator.sendBeacon) {
+        navigator.sendBeacon(LOG_ENDPOINT, JSON.stringify(payload));
+      } else {
+        fetch(LOG_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(err => console.error('Ingest error:', err));
+      }
     }
-  }
 
-  // ———— 1) UTM/Referrer 저장 & referral_event ————
-  window.addEventListener('load', () => {
-    // UTM 추출
-    const params = new URLSearchParams(location.search);
-    const utm = {
-      utm_source: params.get('utm_source'),
-      utm_medium: params.get('utm_medium'),
-      utm_campaign: params.get('utm_campaign')
-    };
-    if (utm.utm_source) {
-      sessionStorage.setItem('utm', JSON.stringify(utm));
-      sendLog('referral_event', {});  
-    }
-    // 세션 시작 & 페이지뷰
-    sendLog('session_start', { user_agent: navigator.userAgent });
-    sendLog('page_view', {});
-  });
-
-  // ———— 2) 체류 시간 & 세션 종료 ————
-  const __startTime = Date.now();
-  window.addEventListener('beforeunload', () => {
-    sendLog('time_on_page', { duration: Date.now() - __startTime });
-    sendLog('session_end', {});
-  });
-
-  // ———— 3) 스크롤 깊이 로깅 ————
-  let __lastScroll = 0;
-  window.addEventListener('scroll', () => {
-    const now = Date.now();
-    if (now - __lastScroll < 1000) return;
-    __lastScroll = now;
-    const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-    sendLog('scroll_event', { scroll_percentage: pct });
-  });
-
-  // ———— 4) 클릭 이벤트 로깅 ————
-  document.addEventListener('click', e => {
-    const tgt = e.target.closest('[data-log-click]') || e.target;
-    // 👇 클릭 로그를 콘솔에도 출력
-    console.log('click_event:', { tag: tgt.tagName, id: tgt.id || null, x: e.clientX, y: e.clientY });
-    sendLog('click_event', {
-      tag: tgt.tagName,
-      id: tgt.id || null,
-      x: e.clientX,
-      y: e.clientY
+    // ———— 1) UTM/Referrer 저장 & referral_event ————
+    window.addEventListener('load', () => {
+      // UTM 추출
+      const params = new URLSearchParams(location.search);
+      const utm = {
+        utm_source: params.get('utm_source'),
+        utm_medium: params.get('utm_medium'),
+        utm_campaign: params.get('utm_campaign')
+      };
+      if (utm.utm_source) {
+        sessionStorage.setItem('utm', JSON.stringify(utm));
+        sendLog('referral_event', {});  
+      }
+      // 세션 시작 & 페이지뷰
+      sendLog('session_start', { user_agent: navigator.userAgent });
+      sendLog('page_view', {});
     });
-  });
 
-  // ———— 5) 내부 내비게이션 ————
-  document.querySelectorAll('a[href^="/"]').forEach(a => {
-    a.addEventListener('click', () => {
-      sendLog('navigation', {
-        from: window.location.pathname,
-        to: new URL(a.href).pathname
+    // ———— 2) 체류 시간 & 세션 종료 ————
+    const __startTime = Date.now();
+    window.addEventListener('beforeunload', () => {
+      sendLog('time_on_page', { duration: Date.now() - __startTime });
+      sendLog('session_end', {});
+    });
+
+    // ———— 3) 스크롤 깊이 로깅 ————
+    let __lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const now = Date.now();
+      if (now - __lastScroll < 1000) return;
+      __lastScroll = now;
+      const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      sendLog('scroll_event', { scroll_percentage: pct });
+    });
+
+    // ———— 4) 클릭 이벤트 로깅 ————
+    document.addEventListener('click', e => {
+      const tgt = e.target.closest('[data-log-click]') || e.target;
+      // 👇 클릭 로그를 콘솔에도 출력
+      console.log('click_event:', { tag: tgt.tagName, id: tgt.id || null, x: e.clientX, y: e.clientY });
+      sendLog('click_event', {
+        tag: tgt.tagName,
+        id: tgt.id || null,
+        x: e.clientX,
+        y: e.clientY
       });
     });
-  });
 
-  // ———— 6) 기타 인터랙션 ————
-  // 공유 버튼
-  document.querySelectorAll('[data-log-share]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      sendLog('share_event', { platform: btn.dataset.platform || null });
+    // ———— 5) 내부 내비게이션 ————
+    document.querySelectorAll('a[href^="/"]').forEach(a => {
+      a.addEventListener('click', () => {
+        sendLog('navigation', {
+          from: window.location.pathname,
+          to: new URL(a.href).pathname
+        });
+      });
     });
-  });
-  // 댓글 폼
-  const commentForm = document.getElementById('comment-form');
-  if (commentForm) {
-    commentForm.addEventListener('submit', () => {
-      sendLog('comment_submit', { post_id: commentForm.dataset.postId });
-    });
-  }
-  // 바운스 정의: 5초 내 상호작용 없으면
-  let __interacted = false;
-  ['click','scroll','keydown'].forEach(evt => 
-    document.addEventListener(evt, () => { __interacted = true; })
-  );
-  setTimeout(() => {
-    if (!__interacted) sendLog('bounce_event', {});
-  }, 5000);
 
-})();
+    // ———— 6) 기타 인터랙션 ————
+    // 공유 버튼
+    document.querySelectorAll('[data-log-share]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sendLog('share_event', { platform: btn.dataset.platform || null });
+      });
+    });
+    // 댓글 폼
+    const commentForm = document.getElementById('comment-form');
+    if (commentForm) {
+      commentForm.addEventListener('submit', () => {
+        sendLog('comment_submit', { post_id: commentForm.dataset.postId });
+      });
+    }
+    // 바운스 정의: 5초 내 상호작용 없으면
+    let __interacted = false;
+    ['click','scroll','keydown'].forEach(evt => 
+      document.addEventListener(evt, () => { __interacted = true; })
+    );
+    setTimeout(() => {
+      if (!__interacted) sendLog('bounce_event', {});
+    }, 5000);
+
+  })();
 </script>
