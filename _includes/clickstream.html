@@ -1,17 +1,8 @@
 <file name=0 path=/Users/ahnmunju/Documents/annmunju.github.io/_includes/clickstream.html><!-- _includes/clickstream.html -->
-{% if jekyll.environment == "production" %}
-  {% assign ingest_url = "INGEST_API_GATEWAY_URL" %}
-{% else %}
-  {% assign ingest_url = "http://localhost:8000/ingest" %}
-{% endif %}
 
 <script>
   (function() {
-    // Determine endpoint at runtime based on hostname
-    const LOG_ENDPOINT = location.hostname === 'localhost'
-      ? 'http://localhost:8000/ingest'
-      : 'https://8hrwthhcbc.execute-api.ap-northeast-2.amazonaws.com/ingest';
-    window.__CLICKSTREAM_LOG_ENDPOINT__ = LOG_ENDPOINT;
+    const LOG_ENDPOINT = 'INGEST_API_GATEWAY_URL';
 
     // ———— 유틸리티: 로그 전송 함수 ————
     function sendLog(eventType, extra = {}) {
