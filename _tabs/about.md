@@ -16,7 +16,7 @@ order: 4
 - **AI & RAG**  
   - Python 기반 이미지 전처리 및 분석 파이프라인 개발  
   - CLIP 모델 활용 멀티모달 검색 기능 설계 및 FastAPI로 서비스화  
-  - PostgreSQL(pgvector) 벡터 DB 최적화 및 대규모 유사도 조회  
+  - PostgreSQL(pgvector) 벡터 DB 최적화 및 유사도 조회  
 
 - **클라우드 인프라 & 배포 자동화**  
   - AWS(EC2, VPC, S3, Lambda) 환경 구축 및 운영
@@ -47,10 +47,7 @@ order: 4
 - **멀티모달 그림 검색 모듈** (2024.03–2024.04)  
   CLIP 모델을 활용해 이미지·텍스트 유사도 검색 기능을 구현하고, 사내 뷰어에 FastAPI API로 연동했습니다.
 
-- **미술 작품 데이터 수집·정제** (2023.02–2023.03)  
-  BeautifulSoup 크롤러와 OpenCV/Pillow 전처리 파이프라인을 통해 26,000여 건의 이미지 및 메타데이터를 수집·구축했습니다.
-
 ## 📚 현재 학습 중
 - Apache Kafka: 실시간 스트리밍 처리 아키텍처  
 - Apache Airflow: 복잡한 워크플로우 스케줄링 및 최적화  
-- MLOps: 모델 배포·모니터링 자동화 및 LangChain 심화 기법  
+- MLOps: 모델 배포·모니터링 자동화
