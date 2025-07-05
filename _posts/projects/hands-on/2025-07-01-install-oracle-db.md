@@ -269,13 +269,24 @@ OS 동일하게 설정하고 생성하면 attach된 상태로 새로운 vm 인�
 
 그리고 2. b. `setup.sh` 스크립트와 3. b. `start_db.sh`를 vi로 작성하고 sudo 권한으로 실행하면 된다.
 
+<div style="display: flex; justify-content: center; gap: 2%; align-items: flex-start;">
+  <img src="sources/hands-on/2025-07-01-install-oracle-db/01.png" alt="setup 1" style="height: auto;">
+  <img src="sources/hands-on/2025-07-01-install-oracle-db/02.png" alt="setup 2" style="height: auto;">
+</div>
+
+<div style="display: flex; justify-content: center; gap: 2%; align-items: flex-start;">
+  <img src="sources/hands-on/2025-07-01-install-oracle-db/03.png" alt="start db 1" style="height: auto;">
+  <img src="sources/hands-on/2025-07-01-install-oracle-db/04.png" alt="start db 2" style="height: auto;">
+</div>
+
+![설치 성공](sources/hands-on/2025-07-01-install-oracle-db/05.png)
+
 ---
 
 ## 다음 단계 (예정)
 
 - ORCLPDB1에 샘플 테이블 생성
 - SQL Developer 또는 APEX를 통해 GUI로 접속해보기
-- 디스크 스냅샷 및 백업 실험
 
 … 그리고 고민 중 😅
 
@@ -285,12 +296,13 @@ OS 동일하게 설정하고 생성하면 attach된 상태로 새로운 vm 인�
 
 VM 이전까지 문제 없이 붙고 실행되는 것을 확인했다. 실습이 생각보다 꽤 디테일하고 삽질도 있었지만 영구 디스크 구조를 잡고 재활용 가능한 스크립트를 만든 덕분에 다음 작업이 한결 편해졌다.
 
-꽤 고전했던 부분은 12 버전부터 있었다는 CDB, PDB 개념을 명확하게 몰라서 DB 초기 생성할 때 startup; 하면 뚝딱 DB 만들어주지 않고 에러난 부분이었다.
-기존처럼 init.ora만 수정해서 인스턴스를 띄우면 될 줄 알았는데, 제어파일과 데이터파일이 실제로 존재해야 mount/open 단계까지 넘어가는 구조였고 게다가 CDB 모드에서는 PDB가 구성되어 있어야만 제대로 기동된다는 것도 뒤늦게 파악했다.
+꽤 고전했던 부분은 12 버전부터 있었다는 CDB, PDB 개념을 명확하게 몰라서 DB 초기 생성할 때 startup; 하면 바로 DB가 만들어지지지 않고 에러난 부분이었다.
+init.ora만 수정해서 인스턴스를 띄우면 될 줄 알았는데 제어파일과 데이터파일이 실제로 존재해야 mount/open 단계까지 넘어가는 구조였고 게다가 CDB 모드에서는 PDB가 구성되어 있어야만 제대로 기동된다는 것도 뒤늦게 파악했다.
 
-처음에는 뭔가 빠졌다는 걸 모르고 로그만 계속 뒤지다가 결국 구조 자체가 CDB/PDB 기반임을 이해하고 나서야 dbca를 활용한 정석 생성 흐름으로 전환했다.
-이후로는 각 구성 요소의 경로와 목적을 명확히 인식하면서 adump, audit, diag, oradata 등 Oracle이 요구하는 디렉토리들을 순서대로 만들어주고 환경 변수까지 정확히 세팅하니 이전보다 훨씬 빠르고 안정적으로 재설치 재기동이 가능해졌다.
+처음에는 로그만 계속 뒤지다가 구조가 CDB/PDB 기반임을 이해하고 나서야 dbca를 이용해 DB를 생성했다.
+이후로는 각 구성 요소에서 Oracle이 요구하는 디렉토리들을 만들어주고 환경 변수까지 세팅하니니 이전보다 훨씬 빠르고 안정적으로 재설치 재기동이 가능해졌다.
 
-특히 Oracle은 기본적으로 많은 디렉토리와 파일 경로를 하드코딩처럼 참조하는데 하나라도 누락되거나 권한이 부족하면 startup조차 되지 않고 에러 로그도 불친절해서 초보자에게는 진입장벽이 높다... 예를 들어 audit_file_dest, db_recovery_file_dest, control_files 등 경로 설정이 존재하더라도 디렉토리가 실제로 없으면 곧바로 에러가 발생하고 SQL*Plus 연결 자체가 끊기는 식이다.
+Oracle은 기본적으로 많은 디렉토리와 파일 경로를 하드코딩처럼 참조하는데 하나라도 누락되거나 권한이 부족하면 startup조차 되지 않고 에러 로그도 불친절해서 초보자에게는 진입장벽이 높다... 
+예를 들어 audit_file_dest, db_recovery_file_dest, control_files 등 경로 설정이 존재하더라도 디렉토리가 실제로 없으면 곧바로 에러가 발생하고 SQL*Plus 연결 자체가 끊기는 식이다.
 
 그 와중에도 어떤 파일이 필요하고 어떤 순서로 생성되어야 하는지를 체계적으로 파악하면서 Oracle이 어떤 구조로 작동하는지 감을 잡게 된 실습이었다. 이후에는 CDB/PDB 개념을 정리해보겠다. 끝!
