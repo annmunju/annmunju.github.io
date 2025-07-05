@@ -3,7 +3,7 @@ title: 카프카 설치하면서 알게 된 내용 정리
 description: 내부 동작 원리와 용어 등
 author: annmunju
 date: 2025-05-22 19:49:00 +0900
-categories: [웹 클릭 로그 수집, 개념 공부]
+categories: [기술 공부 기록, kafka]
 tags: [kafka]
 pin: false
 math: true

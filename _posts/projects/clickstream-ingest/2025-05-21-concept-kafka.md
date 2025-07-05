@@ -3,7 +3,7 @@ title: 카프카 개념 알고 가기
 description: 웹 클릭스트림 전달도구 카프카 사용기
 author: annmunju
 date: 2025-05-21 16:06:00 +0900
-categories: [웹 클릭 로그 수집, 개념 공부]
+categories: [기술 공부 기록, kafka]
 tags: [kafka]
 pin: false
 math: true

@@ -3,7 +3,7 @@ title: 웹 클릭스트림 수집하기 :) 주간 회고 & 로컬 테스트
 description: 카프카 클러스터 띄우고 블로그 클릭스트림을 ingest api로 보내기까지
 author: annmunju
 date: 2025-05-23 15:37:00 +0900
-categories: [웹 클릭 로그 수집, 환경 구성 실습]
+categories: [Hands On, 웹 클릭 로그 수집]
 tags: [test, develop]
 pin: false
 math: true

@@ -3,7 +3,7 @@ title: 웹 클릭스트림 수집하기 5) Kafka Connect S3 Sink 설정
 description: 커넥터 실패 오류 확인 및 해결 과정 정리
 author: annmunju
 date: 2025-05-30 13:15:00 +0900
-categories: [웹 클릭 로그 수집, 환경 구성 실습]
+categories: [Hands On, 웹 클릭 로그 수집]
 tags: [kafka, s3]
 pin: false
 math: true

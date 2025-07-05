@@ -3,7 +3,7 @@ title: 웹 클릭스트림 수집하기 3) 수집 로그 구체화
 description: 진짜 쓸모있는 로그 저장. JS 코드까지 적용하기
 author: annmunju
 date: 2025-05-23 15:07:00 +0900
-categories: [웹 클릭 로그 수집, 환경 구성 실습]
+categories: [Hands On, 웹 클릭 로그 수집]
 tags: [data, log]
 pin: false
 math: true

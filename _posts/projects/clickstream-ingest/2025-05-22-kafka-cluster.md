@@ -3,7 +3,7 @@ title: 웹 클릭스트림 수집하기 2) 카프카 클러스터 구축
 description: 로컬 개발 환경에서 테스트 하고 클라우드로 띄우기 까지
 author: annmunju
 date: 2025-05-22 19:17:00 +0900
-categories: [웹 클릭 로그 수집, 환경 구성 실습]
+categories: [Hands On, 웹 클릭 로그 수집]
 tags: [develop, kafka]
 pin: false
 math: true

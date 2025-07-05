@@ -3,7 +3,7 @@ title: 웹 클릭스트림 수집하기 1) 판 벌리기
 description: 카프카랑 하둡 써서 할만한 프로젝트 계획하기
 author: annmunju
 date: 2025-05-21 10:52:00 +0900
-categories: [웹 클릭 로그 수집, 환경 구성 실습]
+categories: [Hands On, 웹 클릭 로그 수집]
 tags: [data, log, ingest]
 pin: false
 math: true
