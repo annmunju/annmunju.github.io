@@ -58,7 +58,7 @@ RBAC은 사용자가 시스템 리소스에 대한 접근을 할 수 있는 권�
 
 ![주요 개념 도식](sources\tech-deep-dives\2025-07-16-snowflake-start\1.png)
 
-위 그림 가장 상위에 있는 object에는 다음과 같은 종류가 들어올 수 있습니다.
+위 그림 가장 상위에 있는 object에는 다음과 같은 종류가 들어올 수 있다.
 - Account 레벨 : user, role, warehouse, resource monitor, integration, database
 - Database 레벨 : schema
 - Schema 레벨 : table, external table, view, procedure, sequence, stage, file format, pipe, stream, task, UDF
