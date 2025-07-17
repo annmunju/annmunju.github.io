@@ -11,9 +11,9 @@ mermaid: false
 comments: false
 ---
 
-Snowflake는 기존 RDBMS와는 완전히 다른 접근 방식을 취하는 클라우드 네이티브 데이터 웨어하우스다. 전통적인 인덱스와 제약조건 대신 혁신적인 파티셔닝 기반 설계로 뛰어난 성능을 제공한다. 이번 글은 Snowflake의 핵심 개념 부터 덤프에 자주 나오는 개념 위주로 정리한 내용이다.
+이번 글은 Snowflake의 핵심 개념 부터 덤프에 자주 나오는 개념 위주로 정리한 내용이다.
 
-## 1. 마이크로 파티셔닝과 클러스터링
+## 1. 마이크로 파티셔닝과 클러스터링 [(참고)](https://docs.snowflake.com/ko/user-guide/tables-clustering-micropartitions)
 
 Snowflake의 핵심은 **마이크로 파티셔닝(Micro-Partitioning)**이다. 테이블에 데이터를 저장할 때 자동으로 약 500MB(비압축 기준) 단위로 나누어 저장하며, 내부적으로는 압축되어 약 16MB 크기의 컬럼 기반 저장소 형식으로 관리된다.
 
