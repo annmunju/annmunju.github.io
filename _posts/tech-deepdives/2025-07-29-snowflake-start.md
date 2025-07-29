@@ -2,7 +2,7 @@
 title: Snowflake Onboarding
 description: 스노우플레이크 이해하기
 author: annmunju
-date: 2025-07-16 10:11:00 +0900
+date: 2025-07-29 16:31:00 +0900
 categories: [기술 공부 기록, DW]
 tags: [snowflake, dw]
 pin: false
@@ -56,7 +56,7 @@ comments: false
 RBAC은 사용자가 시스템 리소스에 대한 접근을 할 수 있는 권한을 역할(role)에 기반하여 관리하는 보안 모델이다.
 액세스 권한은 역할에 할당되며 이후에 사용자에게 할당된다. 역할은 권한의 집합 또는 단위.
 
-![주요 개념 도식](sources\tech-deep-dives\2025-07-16-snowflake-start\1.png)
+![주요 개념 도식](sources\tech-deep-dives\2025-07-29-snowflake-start\1.png)
 
 위 그림 가장 상위에 있는 object에는 다음과 같은 종류가 들어올 수 있다.
 - Account 레벨 : user, role, warehouse, resource monitor, integration, database
@@ -88,7 +88,7 @@ RBAC은 사용자가 시스템 리소스에 대한 접근을 할 수 있는 권�
 분류된 역할에는 적절한 권한이 속해 있다. 이제 이 중에서도 사용자에게 할당되는 시스템 정의 역할에 대해 알아보자.
 시스템 정의 역할은 아래와 같다.
 
-![시스템 정의 역할](sources\tech-deep-dives\2025-07-16-snowflake-start\2.png)
+![시스템 정의 역할](sources\tech-deep-dives\2025-07-29-snowflake-start\2.png)
 
 - ORGADMIN : 조직 관리자 / GLOBALORGADMIN
 - ACCOUNTADMIN : 계정 관리자. ACCOUNTADMIN은 가장 강력한 역할이므로 제한적으로 사용. 최소 인원 부여가 원칙이나 이슈 대응을 위해 2인에게는 부여하기.

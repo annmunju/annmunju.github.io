@@ -2,7 +2,7 @@
 title: Snowflake Snowpro Core 준비 (1)
 description: 덤프 자주 나오는 개념 정리
 author: annmunju
-date: 2025-07-17 15:57:00 +0900
+date: 2025-07-29 19:57:00 +0900
 categories: [기술 공부 기록, DW]
 tags: [snowflake, dw]
 pin: false
