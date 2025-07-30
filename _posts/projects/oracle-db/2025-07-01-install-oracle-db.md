@@ -3,7 +3,7 @@ title: Oracle database 19c 설치
 description: GCP 인스턴스에 직접 DB 설치하기
 author: annmunju
 date: 2025-07-01 20:45:00 +0900
-categories: [Hands On, DB]
+categories: [Hands On, DB 구축]
 tags: [Oracle, DB]
 pin: false
 math: true

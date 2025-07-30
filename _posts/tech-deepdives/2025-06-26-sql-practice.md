@@ -3,7 +3,7 @@ title: solvesql 문제 풀이
 description: 문제 풀이 목록
 author: annmunju
 date: 2025-06-26 17:31:00 +0900
-categories: [기술 공부 기록, SQL]
+categories: [기술 공부 기록, DE]
 tags: [sql]
 pin: false
 math: true

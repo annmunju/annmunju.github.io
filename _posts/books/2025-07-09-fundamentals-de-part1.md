@@ -3,8 +3,8 @@ title: 견고한 데이터 엔지니어링 Part 1 데이터 엔지니어링 기�
 description: 견데엔 리뷰
 author: annmunju
 date: 2025-07-09 14:09:00 +0900
-categories: [기술 공부 기록, 데이터 엔지니어링]
-tags: []
+categories: [기술 공부 기록, DE]
+tags: [data-engineering]
 pin: false
 math: true
 mermaid: true

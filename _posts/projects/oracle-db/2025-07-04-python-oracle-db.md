@@ -3,7 +3,7 @@ title: Oracle database 사용기
 description: 유저 생성 및 파이썬 패키지 oracledb 조작
 author: annmunju
 date: 2025-07-04 20:45:00 +0900
-categories: [Hands On, DB]
+categories: [Hands On, DB 구축]
 tags: [Oracle, DB]
 pin: false
 math: true

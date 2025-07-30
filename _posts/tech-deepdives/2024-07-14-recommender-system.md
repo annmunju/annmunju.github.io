@@ -3,7 +3,7 @@ title: 추천시스템 이해하기
 description: 룰 베이스 기반 vs 협업 필터링 기반
 author: annmunju
 date: 2024-07-14 18:55:00 +0900
-categories: [기술 공부 기록, ML]
+categories: [기술 공부 기록, AI]
 tags: [ml, preprocessing]
 pin: false
 math: true

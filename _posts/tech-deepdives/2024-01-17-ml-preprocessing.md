@@ -3,7 +3,7 @@ title: 머신 러닝 데이터 전처리
 description: 전처리 방식 알고 가기
 author: annmunju
 date: 2024-01-17 12:05:00 +0900
-categories: [기술 공부 기록, ML]
+categories: [기술 공부 기록, AI]
 tags: [ml, preprocessing]
 pin: false
 math: true
