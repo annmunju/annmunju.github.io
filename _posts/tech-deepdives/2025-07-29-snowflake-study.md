@@ -1,5 +1,5 @@
 ---
-title: Snowflake Snowpro Core 준비 (1)
+title: Snowflake Snowpro Core 준비
 description: 덤프 자주 나오는 개념 정리
 author: annmunju
 date: 2025-07-29 19:57:00 +0900
