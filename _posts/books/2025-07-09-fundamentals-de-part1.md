@@ -1,5 +1,5 @@
 ---
-title: 견고한 데이터 엔지니어링 Part 1 데이터 엔지니어링 기반 구축하기
+title: 견고한 데이터 엔지니어링 Part 1
 description: 견데엔 리뷰
 author: annmunju
 date: 2025-07-09 14:09:00 +0900
@@ -11,7 +11,10 @@ mermaid: true
 comments: true
 ---
 
-> Part 1 데이터 엔지니어링 기반 구축하기 리뷰
+
+# Part 1
+
+> 데이터 엔지니어링 기반 구축하기 리뷰
 
 ![데이터 엔지니어링 수명 주기](sources\books\2025-07-09-fundamentals-de-part1.png)
 
