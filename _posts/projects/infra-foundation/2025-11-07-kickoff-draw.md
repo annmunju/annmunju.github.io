@@ -40,24 +40,24 @@ User라고 표현한 외부의 행위자에는 두 종류가 있다.
 구체적 구성 요소들은 다음과 같다.
 
 1. Bastion VM `bastion-dev-an3-a-01`
-- 의도: 외부 IP 없이 IAP로 안전하게 SSH 접속하는 호스트
-- 핵심 설정
-    - Host 방화벽 `fw-allow-iap-ssh-dev`
-    (src 35.235.240.0/20, tcp/22, 태그: allow-iap-ssh)
-    - VM에는 외부 IP 없이
+    - 의도: 외부 IP 없이 IAP로 안전하게 SSH 접속하는 호스트
+    - 핵심 설정
+        - Host 방화벽 `fw-allow-iap-ssh-dev`
+        (src 35.235.240.0/20, tcp/22, 태그: allow-iap-ssh)
+        - VM에는 외부 IP 없이
 
 2. GKE Private 클러스터 gke-dev-an3-private
-- 의도: 외부 공개 없이 프라이빗 제어계면 + 노드 외부 IP 없이 운영.
-Pod/Service IP는 Host 서브넷의 Secondary ranges(pods-dev/svcs-dev) 사용.
-- 핵심 설정
-    - --enable-ip-alias + --cluster-secondary-range-name=$PODS_RANGE_NAME
-    - --services-secondary-range-name=$SVCS_RANGE_NAME
-    - --enable-private-nodes --enable-private-endpoint (외부 공개 엔드포인트 없음)
-    - --master-ipv4-cidr=$MASTER_CIDR (예: 172.16.0.16/28)
-    - 보안: --workload-pool=${SVC_PROJECT}.svc.id.goog, --enable-network-policy
+    - 의도: 외부 공개 없이 프라이빗 제어계면 + 노드 외부 IP 없이 운영.
+    Pod/Service IP는 Host 서브넷의 Secondary ranges(pods-dev/svcs-dev) 사용.
+    - 핵심 설정
+        - --enable-ip-alias + --cluster-secondary-range-name=$PODS_RANGE_NAME
+        - --services-secondary-range-name=$SVCS_RANGE_NAME
+        - --enable-private-nodes --enable-private-endpoint (외부 공개 엔드포인트 없음)
+        - --master-ipv4-cidr=$MASTER_CIDR (예: 172.16.0.16/28)
+        - 보안: --workload-pool=${SVC_PROJECT}.svc.id.goog, --enable-network-policy
 
 3. Cloud Load Balancing : External HTTP(S) LB(Ingress/NEG)로 Airflow 웹 노출
-- 의도: 쿠버네티스 Ingress(GCE)로 외부 트래픽을 받아 **HTTPS LB → 백엔드(NEG/파드)**까지 연결
+    - 의도: 쿠버네티스 Ingress(GCE)로 외부 트래픽을 받아 **HTTPS LB → 백엔드(NEG/파드)**까지 연결
 
 
 
@@ -70,29 +70,29 @@ Pod/Service IP는 Host 서브넷의 Secondary ranges(pods-dev/svcs-dev) 사용.
 구체적 구성 요소는 다음과 같다.
 
 1. VPC
-- 의도: 모든 서비스 프로젝트가 붙는 중앙 네트워크. 서브넷/방화벽/라우팅을 Host에서 통제
-- 핵심 설정
-    - 서브넷 : 직접 서브넷 생성 (custom)
-    - 라우팅 모드 : 글로벌 (하이브리드 / 멀티 리전)
-    - CIDR 넉넉하게 (확장 / 다중 서브넷 대비)
+    - 의도: 모든 서비스 프로젝트가 붙는 중앙 네트워크. 서브넷/방화벽/라우팅을 Host에서 통제
+    - 핵심 설정
+        - 서브넷 : 직접 서브넷 생성 (custom)
+        - 라우팅 모드 : 글로벌 (하이브리드 / 멀티 리전)
+        - CIDR 넉넉하게 (확장 / 다중 서브넷 대비)
 
 
 2. 서브넷 Primary ranges `subnet-dev-an3-a`
-- 의도: dev 환경 워크로드/노드가 실제로 붙는 1차 IP 공간
-- 핵심 설정
-    - CIDR: 10.10.0.0/24
-    - 리전: asia-northeast3
-    - Private Google Access: 외부 IP 없이 GCS/Registry 접근
+    - 의도: dev 환경 워크로드/노드가 실제로 붙는 1차 IP 공간
+    - 핵심 설정
+        - CIDR: 10.10.0.0/24
+        - 리전: asia-northeast3
+        - Private Google Access: 외부 IP 없이 GCS/Registry 접근
 
 3. 서브넷 Secondary ranges `pods-dev` `svcs-dev`(GKE VPC-네이티브용)
-- 의도: GKE에서 Pod/Service IP를 분리해 관리
-- 핵심 설정
-    - CIDR
-        - pods-dev: 10.20.0.0/16 (Pod CIDR)
-        - svcs-dev: 10.30.0.0/20 (ClusterIP/Service CIDR)
+    - 의도: GKE에서 Pod/Service IP를 분리해 관리
+    - 핵심 설정
+        - CIDR
+            - pods-dev: 10.20.0.0/16 (Pod CIDR)
+            - svcs-dev: 10.30.0.0/20 (ClusterIP/Service CIDR)
     
 4. Cloud Router `cr-seoul` -> Cloud NAT `nat-seoul`
-- 의도: 외부 IP가 없는 VM/GKE 노드의 아웃바운드 인터넷 접속 (패키지 설치, 이미지 pull 등)
+    - 의도: 외부 IP가 없는 VM/GKE 노드의 아웃바운드 인터넷 접속 (패키지 설치, 이미지 pull 등)
 
 5. 방화벽
     1) `fw-allow-iap-ssh-dev` 
