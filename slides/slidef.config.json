@@ -1,0 +1,12 @@
+{
+  "title": "Portfolio",
+  "subtitle": "개인 포트폴리오 및 프로젝트 발표자료",
+  "baseUrl": "/Portfolio",
+  "publishDir": "public",
+  "slidesDir": "slides",
+  "theme": {
+    "primaryColor": "#007bff",
+    "progressColor": "#A020F0",
+    "fontFamily": "system-ui, -apple-system, sans-serif"
+  }
+}
