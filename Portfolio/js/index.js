@@ -166,7 +166,8 @@ class SlideIndex {
     const card = document.createElement("a");
     card.className = "slide-card";
     // Use clean URLs for both dev and static modes
-    card.href = `${slide.name}?from=list`;
+    // GitHub Pages requires index.html or trailing slash
+    card.href = `${slide.name}/index.html?from=list`;
 
     const thumbnail = document.createElement("img");
     thumbnail.className = "slide-thumbnail";
