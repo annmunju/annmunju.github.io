@@ -9,9 +9,15 @@ class SlidefViewer {
     const params = new URLSearchParams(window.location.search);
     // Support both /slide-name and viewer.html?slide=slide-name formats
     const pathParts = window.location.pathname.split('/').filter(p => p);
-    this.slideName = pathParts[pathParts.length - 1] === 'viewer.html'
-      ? params.get("slide") || ""
-      : pathParts[pathParts.length - 1] || params.get("slide") || "";
+    const lastPart = pathParts[pathParts.length - 1];
+    
+    // index.html이나 viewer.html을 제외하고 슬라이드 이름 추출
+    if (lastPart === 'viewer.html' || lastPart === 'index.html' || lastPart.endsWith('.html')) {
+      // HTML 파일이면 그 전 경로를 슬라이드 이름으로 사용
+      this.slideName = window.SLIDE_NAME || params.get("slide") || pathParts[pathParts.length - 2] || "";
+    } else {
+      this.slideName = window.SLIDE_NAME || params.get("slide") || lastPart || "";
+    }
     this.currentSlide = parseInt(params.get("page") || "1", 10);
 
     // State
