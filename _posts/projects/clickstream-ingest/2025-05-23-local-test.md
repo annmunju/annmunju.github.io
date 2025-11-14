@@ -21,7 +21,7 @@ comments: true
 ## 금주 회고
 
 우선 지금까지 한 내용을 정리해보자면 다음과 같다.
-- 수요일 - [개인 블로그를 만들고 로그 이벤트를 심었습니다. 만들어진 로그 이벤트는 람다로 간다.](https://annmunju.github.io/posts/%ED%8C%90-%EB%B2%8C%EB%A6%AC%EA%B8%B0/)
+- 수요일 - [개인 블로그를 만들고 로그 이벤트를 심었다. 만들어진 로그 이벤트는 람다로 간다.](https://annmunju.github.io/posts/%ED%8C%90-%EB%B2%8C%EB%A6%AC%EA%B8%B0/)
 - 목요일 - [카프카 클러스터를 로컬에서 테스트해보고 EC2에도 띄워본다. (with IaC)](https://annmunju.github.io/posts/%EC%B9%B4%ED%94%84%EC%B9%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0/)
 - 금요일 - [로그 이벤트를 목적에 맞게 더 구체적으로 만들어 심는다.](https://annmunju.github.io/posts/%EC%88%98%EC%A7%91-%EB%A1%9C%EA%B7%B8-%EA%B5%AC%EC%B2%B4%ED%99%94/)
 
