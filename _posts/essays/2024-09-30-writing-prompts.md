@@ -1,9 +1,9 @@
 ---
-title: 2024년 글감 정리
+title: 글감 정리
 description: 함께 일하고 싶은 사람, 회고 방법론, To Be List 등
 author: annmunju
 date: 2024-09-30 12:05:00 +0900
-categories: [회고 및 에세이, '2024']
+categories: [회고 및 에세이, '2025']
 tags: [diary, essay]
 pin: false
 math: true

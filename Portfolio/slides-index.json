@@ -1,12 +1,26 @@
 {
   "slides": [
     {
-      "name": "데이터-엔지니어-지원_안문주_포트폴리오",
-      "pageCount": 20,
-      "createdAt": "2025-11-13",
-      "sha256": "3597cd9aaad12db5c49f112df09dead9233587f917b1584e105d80b06870de00",
+      "name": "2025년 상반기 포트폴리오",
+      "pageCount": 19,
+      "createdAt": "2025-11-01",
+      "sha256": "9023772f4701b1076432d24e31ae4b30dba00a74801bd19fa1796293f3e3fc4b",
+      "format": "webp"
+    },
+    {
+      "name": "프로젝트I RAG 기반 정책 챗봇 구현",
+      "pageCount": 19,
+      "createdAt": "2025-11-01",
+      "sha256": "fdb4dfd1882c27a7bc8cb72b152fb9310c3d9d37336f02f8dbf3526c5a282f9a",
+      "format": "webp"
+    },
+    {
+      "name": "프로젝트II 데이터 처리를 위한 Backend Workbench 구축",
+      "pageCount": 57,
+      "createdAt": "2025-11-01",
+      "sha256": "7160708cc7e2a6a2f602d52598784177ba2663610052b6b73379f316b3bfe697",
       "format": "webp"
     }
   ],
-  "updatedAt": "2025-11-13T05:32:43.002Z"
+  "updatedAt": "2025-11-01T04:04:42.593Z"
 }
