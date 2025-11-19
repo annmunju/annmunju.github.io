@@ -3,7 +3,7 @@ title: 포트폴리오 멘토링
 description: 일을 잘하는 방법과 포트폴리오 구성 등
 author: annmunju
 date: 2025-01-21 12:05:00 +0900
-categories: [회고 및 에세이, '2025']
+categories: [회고 및 에세이, 기록]
 tags: [diary, essay]
 pin: false
 math: true
