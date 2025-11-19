@@ -5,34 +5,42 @@ order: 4
 
 # 어쩌다 개발자입니다만
 
-안녕하세요. 어쩌다 개발하고 있는 안문주 입니다.  
-데이터 분석으로 커리어를 시작해서 클라우드 인프라도 배우고 
-요즘은 데이터 엔지니어로 일하고 있습니다.
-블로그에 올리는 글도 AI/ML 부터 클라우드 인프라, 회고까지 
-다양한 관심사를 기반으로 점점 늘어나고 있네요.
-
-이론보다는 **실무형 글쓰기**를 지향합니다.
-직접 겪으며 얻는 시행착오와 깨달음 위주로 내용을 풀어가려 해요. 
-삽질한 과정도 공유합니다. 
-제가 했던 고생담을 참고해 비슷한 함정을 피하실 수 있길 바랍니다. 
-
-이 블로그는 제 기술 일지이자 기록장입니다. 아직은 부족한 내용들이 많습니다.  
-해소되지 않는 궁금한 내용이나 더 좋은 의견 있으시면 언제든 댓글이나 메일 부탁드립니다.
-
+안녕하세요, 안문주입니다.  
+  
+스무 살 무렵엔 ‘그냥 사무직 정도 하지 않을까?’ 했고,  
+대학 졸업 즈음엔 데이터 분석가가 되어보자고 생각했어요.  
+그러다 머신러닝, 클라우드 인프라, 데이터 엔지니어링까지 배우며  
+지금은 AI 데이터 엔지니어로 성장해가는 중입니다.  
+  
+타고난 “\*S\*J” 스타일이라  
+정형화된 논리 구조, 자동화, 루틴 같은 걸 특히 좋아합니다.  
+그래서 처음엔 ML 모델처럼 일반화된 확률론 모델을 만드는 데 관심을 두다가,  
+점차 변하지 않는 로직과 데이터 처리의 매력에 빠져  
+코딩 자체에 재미를 느끼게 되었어요.  
+지금은 이 둘을 아우르는 MLOps에 가장 큰 관심을 두고 있습니다.  
+  
+저만의 비장의 무기는 일단 기록부터 해보자라는 마음가짐입니다.  
+그래서 이 블로그엔 한 가지 주제에 국한되지 않고  
+제가 배우고 시도한 것들이 자연스럽게 뒤섞여 있을지도 몰라요.  
+  
+하지만 그 덕분에,  
+저에게는 가장 솔직하고 살아있는 성장 기록이 되고 있습니다.  
+  
 ## 🎯 주요 관심 분야
 
 - Data Engineering 
-- Computer Science
-- `New!` Coding with AI (Vibe coding, MCP ...)
+- DevOps, DataOps, MLOps
+- Coding with AI (Vibe coding, MCP ...)
 
 ## 🛠️ 보유 기술 스택
 - **언어 & 스크립트**: Python, Bash, SQL  
 - **데이터베이스**: PostgreSQL(pgvector), MySQL, DynamoDB  
-- **클라우드 & 컨테이너**: AWS (EC2, VPC, S3, Lambda), Terraform, Docker, Kubernetes(AWS EKS, GCP GKE)  
+- **클라우드 & 컨테이너**: AWS (EC2, VPC, S3, Lambda), Docker, Kubernetes(AWS EKS, GCP GKE)  
 - **CI/CD & 모니터링**: GitHub Actions, Jenkins, ArgoCD
 
 ## 📫 연락처
 
 - GitHub: [github.com/annmunju](https://github.com/annmunju)  
-- Blog: [annmunju.github.io](https://annmunju.github.io) (2025~) / [보리보리쌀 ;p](https://mungdo-log.tistory.com/) (~2025) / [브런치 에세이](https://brunch.co.kr/@annmunju#articles)
+- Blog: [annmunju.github.io](https://annmunju.github.io)
+- 사담: [브런치 에세이](https://brunch.co.kr/@annmunju#articles)
 - Email: ahnmunju@gmail.com
