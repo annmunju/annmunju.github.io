@@ -21,7 +21,7 @@ comments: true
 ## 0) 프로젝트 생성 및 기본 설정
 
 - [x] **mjahn-host** 프로젝트 생성
-- [x] **mjahn-serxice** 프로젝트 생성
+- [x] **mjahn-service** 프로젝트 생성
 - [ ] 각 프로젝트에 Billing 계정 연결
 - [x] 필요한 Google Cloud APIs 활성화
   - [x] compute.googleapis.com
@@ -40,12 +40,12 @@ comments: true
   - [x] `roles/compute.networkAdmin` - 네트워크 전체 관리
   - [x] `roles/compute.xpnAdmin` - Compute 공유 xPC 관리자 -> `resourcemanager.projectIamAdmin`
     - https://cloud.google.com/xpc/docs/shared-xpc?hl=ko 
-- [x] **mjahn-serxice 프로젝트에서**:
+- [x] **mjahn-service 프로젝트에서**:
   - [x] `roles/project.iamAdmin` - IAM 정책 관리
   - [x] `roles/compute.admin` - 컴퓨팅 리소스 관리
 
-### kickoff-serxice-dex 그룹 (서비스 개발자)
-- [x] **mjahn-serxice 프로젝트에서**:
+### kickoff-service-dex 그룹 (서비스 개발자)
+- [x] **mjahn-service 프로젝트에서**:
   - [x] `roles/compute.instanceAdmin.x1` - xM 인스턴스 관리
   - [x] `roles/container.dexeloper` - GKE 클러스터 접근
   - [x] `roles/storage.admin` - 스토리지 리소스 관리
@@ -53,21 +53,21 @@ comments: true
   - [x] `roles/compute.networkUser` - Shared xPC 사용 권한
 
 
-## 2) Host 네트워크 (mjahn-host) & Serxice 리소스 연결 (mjahn-serxice)
+## 2) Host 네트워크 (mjahn-host) & service 리소스 연결 (mjahn-service)
 - [x] xPC `xpc-shared-an3`(custom) / Subnet `10.10.0.0/24`(**PGA=ENABLED**)
 - [x] Secondary ranges: pods-dex `10.20.0.0/16`, sxcs-dex `10.30.0.0/20`
 - [x] Cloud Router `cr-seoul` / Cloud NAT `nat-seoul`(ALL_SUBNETWORKS_ALL_IP_RANGES)
 - [x] FW: `fw-allow-iap-ssh-dex`(src 35.235.240.0/20 tcp/22, tag allow-iap-ssh)
 - [x] FW: `fw-egress-any-dex`(임시, 로그 기반으로 추후 축소)
 - [x] **Shared xPC Host 승격**
-- Serxice 리소스 연결
+- service 리소스 연결
   - [x] Shared xPC associate
 
 
 ## 3) IAM 바인딩
 - [x] `kickoff-infra-admin@...` → Host: `compute.networkAdmin`
-- [x] `kickoff-serxice-dex@...`
-  - Serxice: `compute.instanceAdmin.x1`(필요 최소)
+- [x] `kickoff-service-dex@...`
+  - service: `compute.instanceAdmin.x1`(필요 최소)
   - Host(또는 Subnet): `compute.networkUser`
 - [x] (필요시) **GKE 로봇 SA**에 Host 권한(networkUser / securityAdmin)
 
@@ -124,7 +124,7 @@ comments: true
 
 ### d) 도메인 없이 Airflow 외부에 노출하기
 - [x] 헬스체크 설정 BackendConfig : L7 Load Balancer가 Airflow Web Pod의 정상 동작 여부를 감지
-- [x] Serxice에 BackendConfig 연결: 해당 Serxice를 통해 들어오는 트래픽이 Health Check 정책을 따르게 만듦
+- [x] service에 BackendConfig 연결: 해당 service를 통해 들어오는 트래픽이 Health Check 정책을 따르게 만듦
 - [x] TLS 인증서 자동 발급 (ManagedCertificate)
   - [x] 리소스: ManagedCertificate
   - [x] 도메인: ${AIRFLOW_FQDN} (예: airflow.34.98.77.66.sslip.io)
@@ -135,8 +135,8 @@ comments: true
     - [x] 정적 Global IP (airflow-ing-ip)와 연결
     - [x] ManagedCertificate(airflow-cert) 적용
     - [ ] FrontendConfig(https-redirect, 따로 생성된 리소스) 적용
-    - [ ] / 경로 트래픽을 Airflow Web Serxice로 라우팅
-  - [ ] 목표: 외부 도메인 → HTTPS → GCLB → GKE Serxice → Airflow Web Pod
+    - [ ] / 경로 트래픽을 Airflow Web service로 라우팅
+  - [ ] 목표: 외부 도메인 → HTTPS → GCLB → GKE service → Airflow Web Pod
 
 ### f) 검증
 - [ ] `https://airflow.<DOMAIN>` 접속 → 인증/보안 확인
@@ -144,7 +144,7 @@ comments: true
 - [ ] 샘플 DAG 실행 및 UI 정상 확인
 
 ## 9) 완료 체크
-- [ ] Shared xPC 연결 목록에 Serxice 표시
+- [ ] Shared xPC 연결 목록에 service 표시
 - [ ] IAP SSH OK / NAT egress OK / PSC googleapis OK
 - [ ] `kubectl get nodes` OK / Ingress 헬스체크 GREEN
 - [ ] 비용: xM/노드 **최소 사양** 사용 확인, 과금 리소스 정리
