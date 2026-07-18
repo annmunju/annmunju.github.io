@@ -3,7 +3,7 @@ title: "Remindy 안정화하기: 오프라인 우선 저장과 알림 신뢰성"
 description: 캐시, 동기화, 알림 fallback, AI 태그 기능을 구현한 기록
 author: annmunju
 date: 2026-06-20 13:29:08 +0900
-categories: [Hands On, Remindy]
+categories: [Hands On, REMINDY]
 tags: [remindy, offline-first, cache, sync, notification, retry, tag, ai, ux]
 pin: false
 math: true

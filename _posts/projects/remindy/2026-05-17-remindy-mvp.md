@@ -3,7 +3,7 @@ title: "Remindy 만들기: 리마인더 앱의 시작과 핵심 기능"
 description: 초기 앱 구조부터 AI 알림, 인증, 알림 시스템까지 구현한 기록
 author: annmunju
 date: 2026-05-17 15:39:55 +0900
-categories: [Hands On, Remindy]
+categories: [Hands On, REMINDY]
 tags: [remindy, expo, react-native, ai, authentication, notification, product]
 pin: false
 math: true

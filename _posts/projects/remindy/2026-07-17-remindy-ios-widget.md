@@ -3,7 +3,7 @@ title: Remindy iOS 홈 위젯 만들기
 description: 리마인더를 앱 밖에서도 확인하기 위한 위젯 MVP
 author: annmunju
 date: 2026-07-17 11:39:13 +0900
-categories: [Hands On, Remindy]
+categories: [Hands On, REMINDY]
 tags: [remindy, ios, widget, expo, react-native]
 pin: false
 math: true
